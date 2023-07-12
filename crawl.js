@@ -8,7 +8,7 @@ function getURLsFromHTML (htmlBody, baseURL) {
         if (element.href.slice(0, 1) === '/') {
             // relative
             try {
-                const urlObj = new URL(`${baseURL}${element.href}`);
+                const urlObj = new URL(`${ baseURL }${ element.href }`);
                 urls.push(urlObj.href);
             }
             catch (err) {
