@@ -19,5 +19,8 @@
   "homepage": "https://github.com/MulithaBM/web-crawler#readme",
   "devDependencies": {
     "jest": "^29.6.1"
+  },
+  "dependencies": {
+    "jsdom": "^22.1.0"
   }
 }
