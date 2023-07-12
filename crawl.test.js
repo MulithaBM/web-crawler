@@ -5,12 +5,13 @@ test('getURLsFromHTML absolute', () => {
     const inputHTMLBody = 
     `<html>
         <body>
-            <a href = 'https://test.test.test/path'>Test</a>
+            <a href = 'https://test.test/path'>Test</a>
         </body>
     </html>`;
-    const inputBaseURL = 'https://test.test.test'
+    const inputBaseURL = 'https://test.test';
+
     const actual = getURLsFromHTML(inputHTMLBody, inputBaseURL);
-    const expected = ['https://test.test.test/path'];
+    const expected = ['https://test.test/path'];
 
     expect(actual).toEqual(expected);
 });
@@ -22,9 +23,10 @@ test('getURLsFromHTML relative', () => {
             <a href = '/path'>Test</a>
         </body>
     </html>`;
-    const inputBaseURL = 'https://test.test.test'
+    const inputBaseURL = 'https://test.test';
+
     const actual = getURLsFromHTML(inputHTMLBody, inputBaseURL);
-    const expected = ['https://test.test.test/path'];
+    const expected = ['https://test.test/path'];
 
     expect(actual).toEqual(expected);
 });
@@ -34,13 +36,14 @@ test('getURLsFromHTML multiple', () => {
     const inputHTMLBody = 
     `<html>
         <body>
-            <a href = 'https://test.test.test/path1'>Test</a>
+            <a href = 'https://test.test/path1'>Test</a>
             <a href = '/path2'>Test</a>
         </body>
     </html>`;
-    const inputBaseURL = 'https://test.test.test'
+    const inputBaseURL = 'https://test.test';
+
     const actual = getURLsFromHTML(inputHTMLBody, inputBaseURL);
-    const expected = ['https://test.test.test/path1', 'https://test.test.test/path2'];
+    const expected = ['https://test.test/path1', 'https://test.test/path2'];
 
     expect(actual).toEqual(expected);
 });
@@ -53,7 +56,8 @@ test('getURLsFromHTML invalid', () => {
             <a href = 'test'>Test</a>
         </body>
     </html>`;
-    const inputBaseURL = 'https://test.test.test'
+    const inputBaseURL = 'https://test.test';
+
     const actual = getURLsFromHTML(inputHTMLBody, inputBaseURL);
     const expected = [];
 
@@ -61,25 +65,28 @@ test('getURLsFromHTML invalid', () => {
 });
 
 test('normalizeURL strip protocol', () => {
-    const input = 'https://test.test.test/path';
+    const input = 'https://test.test/path';
+
     const actual = normalizeURL(input);
-    const expected = 'test.test.test/path';
+    const expected = 'test.test/path';
 
     expect(actual).toEqual(expected);
 });
 
 test('normalizeURL strip trailing slash', () => {
-    const input = 'https://test.test.test/path/';
+    const input = 'https://test.test/path/';
+
     const actual = normalizeURL(input);
-    const expected = 'test.test.test/path';
+    const expected = 'test.test/path';
 
     expect(actual).toEqual(expected);
 });
 
 test('normalizeURL strip uppercase', () => {
-    const input = 'https://TEST.test.test/path/';
+    const input = 'https://TEST.test/path/';
+    
     const actual = normalizeURL(input);
-    const expected = 'test.test.test/path';
+    const expected = 'test.test/path';
 
     expect(actual).toEqual(expected);
 });
